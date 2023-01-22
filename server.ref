@@ -1,0 +1,2 @@
+uwsgi --socket speed_copy.sock --module speed_copy.wsgi --chmod-socket=666
+

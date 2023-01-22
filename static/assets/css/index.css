@@ -1,0 +1,48 @@
+
+.main{
+}
+    .left{
+        margin-top: 70px;
+    }
+
+@media (max-width : 766px){
+    .left{
+        margin-top: 10px;
+    }
+   
+}
+.main-text{
+    color: white;
+}
+.m-card{
+    max-height: 368px;
+    height: 370px;
+    background-color: lightblue;
+    
+    
+}
+.card{
+    box-shadow: 5px 5px 10px black;
+}
+.products{
+    
+    margin-top:50px;
+    min-width:90%;
+    margin-bottom:50px;
+}
+
+@media (max-width:766px) {
+    .l-carousel{
+        display: none;
+    }
+    .main-text{
+        margin: auto;
+    }
+}
+
+
+@media(min-width:766px){
+    .about-text{
+        font-size: 25px;
+    }
+}

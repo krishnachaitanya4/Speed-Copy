@@ -1,0 +1,150 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap_css/bootstrap.min.css' %}">
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'assets/css/navbar.css' %}">
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <title>Product</title>
+</head>
+
+<body>
+    <!--Top navbar start here-->
+    <nav class="navbar sticky-top navbar-expand-lg">
+        <div class="container-fluid">
+            <img src="{% static 'assets/images/speed_copy.png' %}" alt="" style="height: 60px;">
+            <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav" style="margin-left: 40px;">
+                    <a class="nav-link" aria-current="page" href="{{request.scheme}}://{{request.get_host}}{% url 'home'%}">Home</a>
+                    <a class="nav-link" href="{{request.scheme}}://{{request.get_host}}{% url 'home'%}#services">Services</a>
+                    <a class="nav-link" href="{{request.scheme}}://{{request.get_host}}{% url 'home'%}#about">About</a>
+                    <a class="nav-link" href="{{request.scheme}}://{{request.get_host}}{% url 'home'%}#contact">Contact</a>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!--Top navbar ends here-->
+    <div class="text-center" style="margin-top: 50px;">
+        <h1>Register</h1>
+    </div>
+    {% for message in messages %}
+    <div class="alert {{message.tags}} text-center alert-dismissible">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <strong>{{message}}</strong>
+    </div>
+    {% endfor %}
+    <div class="d-flex justify-content-center" style="margin-bottom: 70px;">
+        <form class="form-control" style="width: 700px;" method="post" action="register">
+            {% csrf_token %}
+            <!-- Email input -->
+            <div class="row">
+                <div class=" col-md-6 form-outline mb-4">
+                    <input type="text" id="f_name" class="form-control" name="f_name" />
+                    <label class="form-label" for="f_name">First name</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="col-md-6 form-outline mb-4">
+                    <input type="text" id="l_name" class="form-control" name="l_name"/>
+                    <label class="form-label" for="l_name">last name</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class=" col-md-6 form-outline mb-4">
+                    <input type="email" id="email" class="form-control" name="email" required/>
+                    <label class="form-label" for="email">Email address</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="col-md-6 form-outline mb-4">
+                    <input type="tel" id="phone" class="form-control" name="phone" />
+                    <label class="form-label" for="phone">Phone number</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class=" col-md-6 form-outline mb-4">
+                    <input type="password" id="pass" class="form-control" name="password" required/>
+                    <label class="form-label" for="pass">Password</label>
+                </div>
+
+                <!-- Password input -->
+                <div class="col-md-6 form-outline mb-4">
+                    <input type="password" id="pass2" class="form-control" name="password2" required/>
+                    <label class="form-label" for="pass2">Confirm Password</label>
+                </div>
+            </div>
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                        <input class="form-check-input" style="background-color: #01377f;" type="checkbox" value=""
+                            id="form2Example31" checked />
+                        <label class="form-check-label" for="form2Example31"> Remember me </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-block mb-4 "
+                    style="background-color: #01377f;color:white; width:70%">Register</button>
+            </div>
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p class="text-center">Already have an account? <a href="login" style="color: #01377f;margin-bottom: 170px;">Sign in</a></p>
+            </div>
+        </form>
+    </div>
+    <!--Bottom Navigation icons start here-->
+    <footer class=" py-4 footer-1 fixed-bottom" style="background-color: #01377f; border-radius:20px 20px 0px 0px;">
+        <div class="container text-light text-center">
+            <div class="row align-items-center">
+                <div class="col home">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-house" viewBox="0 0 16 16">
+                        <path
+                            d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                    </svg>
+                </div>
+
+                <div class="col contact">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                    </svg>
+                </div>
+
+                <div class="col print">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-printer-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" />
+                        <path
+                            d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+                    </svg>
+                </div>
+                <div class="col account">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Bottom Navigation icons start here-->
+</body>
+
+</html>

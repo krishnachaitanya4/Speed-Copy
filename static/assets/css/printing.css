@@ -1,0 +1,36 @@
+.upload-box{
+    font-size: 16px;
+    background:white;
+    border-radius: 50px;
+    outline: none;
+    box-shadow: 5px 5px 10px black;
+}
+
+::-webkit-file-upload-button{
+    color: white;
+    background: #01377f;
+    padding: 10px;
+    border:none;
+    border-radius: 50px;
+    box-shadow:1px 0 1px 1px #6b4559;
+    outline: none;
+    }
+
+::-webkit-file-upload-button:hover{
+    background: #1a56a5;
+}
+
+.input-group{
+    margin: 20px;
+    max-width: 80%;
+}
+
+@media (min-width:992px) {
+    .printing-card{
+        max-width: 900px;
+    }
+}
+.table{
+    width: 95%;
+    margin-left:10px;
+}

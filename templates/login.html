@@ -1,0 +1,135 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'assets/bootstrap_css/bootstrap.min.css' %}">
+  <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'assets/css/navbar.css' %}">
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <title>Product</title>
+</head>
+
+<body>
+  <!--Top navbar start here-->
+  <nav class="navbar sticky-top navbar-expand-lg">
+    <div class="container-fluid">
+      <img src="{% static 'assets/images/speed_copy.png' %}" alt="" style="height: 60px;">
+      <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
+        <div class="navbar-nav" style="margin-left: 40px;">
+          <a class="nav-link" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="#">Services</a>
+          <a class="nav-link">Contact</a>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+  <!--Top navbar ends here-->
+  <div class="text-center" style="margin-top: 70px;">
+    <h1>Sign in</h1>
+  </div>
+  {% for message in messages %}
+  <div class="alert {{message.tags}} text-center alert-dismissible">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>{{message}}</strong>
+  </div>
+  {% endfor %}
+
+  <div class="d-flex justify-content-center">
+    <form class="form-control" style="width: 700px;" method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <input type="email" id="email" name="email" class="form-control" placeholder="Email"/>
+        <label class="form-label" for="email">Email address</label>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password"/>
+        <label class="form-label" for="password">Password</label>
+      </div>
+
+      <!-- 2 column grid layout for inline styling -->
+      <div class="row mb-4">
+        <div class="col d-flex justify-content-center">
+          <!-- Checkbox -->
+          <div class="form-check">
+            <input class="form-check-input" style="background-color: #01377f;" type="checkbox" value=""
+              id="form2Example31" checked />
+            <label class="form-check-label" for="form2Example31"> Remember me </label>
+          </div>
+        </div>
+
+        <div class="col">
+          <!-- Simple link -->
+          <a href="#!" style="color: #01377f;">Forgot password?</a>
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <div class="text-center">
+        <button type="submit" class="btn btn-block mb-4 " style="background-color: #01377f;color:white; width:70%">Sign
+          in</button>
+      </div>
+      <!-- Register buttons -->
+      <div class="text-center">
+        <p class="text-center">Not a member? <a href="{% url 'register' %}" style="color: #01377f;">Register</a></p>
+      </div>
+    </form>
+  </div>
+  <!--Bottom Navigation icons start here-->
+  <footer class="py-4 footer-1 footer fixed-bottom" style="background-color: #01377f; border-radius:20px 20px 0px 0px">
+    <div class="container text-light text-center">
+      <div class="row align-items-center">
+        <div class="col home">
+          <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}" style="color:white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+              class="bi bi-house-door-fill" viewBox="0 0 16 16">
+              <path
+                d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z" />
+            </svg></a>
+        </div>
+
+        <div class="col print">
+          <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}#services" style="color: white;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-printer-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" />
+            <path
+              d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+          </svg>
+          </a>
+        </div>
+        <div class="col account">
+          <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}#about" style="color: white;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+              class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+            </svg>
+          </a>
+        </div>
+        
+        <div class="col contact">
+          <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}#contact" style="color: white;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            class="bi bi-telephone-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+          </svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--Bottom Navigation icons end here-->
+</body>
+
+
+</html>

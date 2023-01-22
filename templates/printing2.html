@@ -1,0 +1,256 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/product.css' %}">
+        <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+        <!--=================--> 
+        <script src="https://frontenddeveloping.github.io/pdfjs-dist/build/pdf.js"></script>
+        <script src="https://frontenddeveloping.github.io/pdfjs-dist/build/pdf.worker.js"></script>
+        <title>Speed Copy</title>
+    </head>
+<body>
+    
+
+    <div style="background-color: #F0F0F0; height: 96vh; padding-top:90px; " >
+        <div class="container mt-5 mb-5" >
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10">
+                    <div class="card" style="border-radius: 20px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-bottom: 100px;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="images p-3">
+                                    <div class="text-center p-4"> <img id="main-image" src="{% static 'img/image/3255254.jpg' %}" width="450" /> </div>
+                                    <div><p class="about">{{pro.description}}</p></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product p-4">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span> </div> <i class="fa fa-shopping-cart text-muted"></i>
+                                    </div>
+                                    <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">services</span>
+                                        <h5 class="text-uppercase">{{pro.name}}</h5>
+                                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">₹{{pro.price}}/page</span>
+                                            <!--<div class="ml-2"> <small class="dis-price">₹{{pro.price}}</small> <span>40% OFF</span> </div>-->
+                                            
+                                        </div>
+                                        <!--<div class="thumbnail text-center" style=" height: 30px; margin-top:1 4px; ">  upload a pdf</div>-->
+                                    </div>
+                                    <!--Main form-->
+                                    <form method="post" action="{% url 'add_to_cart' %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="text" name="product_name" value="printing" style="visibility: hidden;">
+                                        <div class="form-group  mb-3">
+                                            <label for="file">Upload pdf</label>
+                                            <input type="file" name="pdf_file" id="file" accept=".pdf" required class="form-control">
+                                        </div>
+    
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1">Print colour</span>
+                                            <select class="selectpicker" name="colour" id="selectorColorId">
+                                                <option value="1">Black and White</option>
+                                                <option value="2" >Colour</option>
+                                              </select>
+                                        </div>
+         
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1">No.of sides</span>
+                                            <select class="selectpicker" name="sides" id="selectorSideId">
+                                                <option value="1">single side</option>
+                                                <option value="2">two sides</option>
+                                              </select>
+                                        </div>
+    
+                                        
+                                        
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1">No.of pages</span>
+                                            <input
+                                            name = "pages"
+                                              type="text"
+                                              id = "dis-play"
+                                              class="form-control display"
+                                              placeholder="Upload pdf to get page count"
+                                              aria-label="Username"
+                                              aria-describedby="basic-addon1"
+                                              style="background-color:white;"
+                                              readonly
+                                            />
+                                          </div>
+    
+                                          <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon2">No.of copies</span>
+                                            <input
+                                              name = "copies"
+                                              min = "1"
+                                              type="number"
+                                              id = "copies"
+                                              class="form-control"
+                                              placeholder="no_of_copies"
+                                              aria-label="no_of_copies"
+                                              aria-describedby="basic-addon1"
+                                              value="1"
+                                            />
+                                          </div>
+    
+                                          <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text">price</span>
+                                            </div>
+                                            <input type="number" 
+                                            name = "price"
+                                            value="0.00" 
+                                            class="form-control" 
+                                            aria-label="Amount (to the nearest dollar)" 
+                                            id = "xxx"
+                                            style="background-color:white;" 
+                                            readonly />
+                                            <div class="input-group-append">
+                                              <span class="input-group-text">₹</span>
+                                            </div>
+                                          </div>
+                                          <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+                                          <script>
+                                               
+                                            let price = 1.25
+                                            let colored = 1
+                                            let sides = 1
+                                            let pages = 0
+                                            let p = 0;
+                                            let pr = 1.25;
+                                            let n = 1;
+                                            console.log("sides",price)
+                                            console.log("color",colored)
+    
+                                            function set_price(n){
+                                                pages = n;
+                                                //console.log(pages)
+                                            }
+    
+                                            function set_pr(n){
+                                                pr = n;
+                                                //console.log(p)
+                                            }
+    
+                                            function set_n(a){
+                                                n = a;
+                                            }
+                                            side.onchange = function(event){
+                                                sides = event.target.value
+                                                if (sides==2){
+                                                    document.getElementById("selectorColorId").options[1].disabled=true;
+                                                }
+                                                if (sides==1){
+                                                    document.getElementById("selectorColorId").options[1].disabled=false;
+                                                }
+                                                if (sides==2 && colored ==1) {
+                                                    
+                                                    p = 1.5;
+                                                }else if(sides==1 && colored == 2){
+                                                    p = 10;
+                                                }
+                                                else if(sides==1 && colored == 1){
+                                                    p = 1.25;
+                                                }
+    
+                                                set_pr(p);
+                                                console.log(pr*(pages*n));
+                                                document.getElementById("xxx").value = pr*(pages*n);
+                                                
+                                            }
+                                            color.onchange = function(event){
+                                                colored = event.target.value
+                                                
+                                                if (colored == 2){
+                                                    document.getElementById("selectorSideId").options[1].disabled=true;
+                                                    if (sides == 1){
+                                                        p = 10;
+                                                    }
+                                                }else if(colored == 1){
+                                                    document.getElementById("selectorSideId").options[1].disabled=false;
+                                                    p = (sides == 2 )? 1.5 : 1.25
+                                                }
+                                                set_pr(p);
+                                                console.log(pr*(pages*n));
+                                                document.getElementById("xxx").value = pr*(pages*n);
+                                
+                                            }
+    
+                                            copies.onchange = function(event){
+                                                n = event.target.value
+                                                set_n(n)
+                                                console.log(pr)
+                                                console.log(pr*(pages*n));
+                                                document.getElementById("xxx").value= pr*(pages*n);
+                                            }
+    
+                                            file.onchange =async function (event){
+                                                var pdf =await  event.target.files[0]
+                                                console.log(pdf)
+                                                if (pdf === undefined){
+                                                    console.log("no file choosen")
+                                                    price = 1.25
+                                                    colored = 1
+                                                    sides = 1
+                                                    pages = 0
+                                                    p = 0;
+                                                    pr = 1.25;
+                                                    n = 1;
+                                                    set_price(0)
+                                                    console.log(pr*(pages*n));
+                                                    document.getElementById("dis-play").value =  pages       
+                                                    document.getElementById("xxx").value =  p;
+                                                }else{
+                                                    var filereader = await new FileReader()
+                                                    filereader.onload =async function  (){
+                                                        var typedarray =await new Uint8Array(this.result)
+                                                        const task = await pdfjsLib.getDocument(typedarray)
+                                                        await task.promise.then((pdf)=>{
+    
+                                                            hi = pdf.numPages
+                                                            document.getElementById("dis-play").value =  pdf.numPages      
+                                                            console.log(pr*(pages*n));  
+                                                            document.getElementById("xxx").value =  pdf.numPages*(pr*n);
+                                                            set_price(pdf.numPages)
+                                                            
+                                                        })
+                                                    
+                                                    }
+                                                
+                                                    filereader.readAsArrayBuffer(pdf)  
+                                                }
+                                            }
+                                            
+                                        </script>
+                                        
+                                          
+                                          <!--<h5 class="text-uppercase">price: <span id = "xxx"></span></h5>-->
+                                        {% if user.is_authenticated %}
+                                        <div class="cart mt-4 align-items-center"> <button type = "submit" class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
+                                        {% else %}
+                                        <div class="cart mt-4 align-items-center"> <button type = "submit" class="btn btn-danger text-uppercase mr-2 px-4" disabled>Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
+                                        <span style="color: red;">* Please login before requesting a print.</span>
+                                        {% endif %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

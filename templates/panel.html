@@ -1,0 +1,43 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'assets/bootstrap_css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+  <!--https://unpkg.com/@popperjs/core@2-->
+  <script src="{% static 'assets/js/popper.min.js'%}"></script>
+  <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'assets/js/bootstrap.bundle.js'%}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script>
+    var host = "{{ request.scheme }}://{{ request.get_host }}"  
+    var url = "{%get_media_prefix%}"
+  </script>
+  
+  <title>SpeedCopy - cart</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100" style="min-height: 100vh;">
+  {%include 'admin_navbar.html'%}
+  
+</body>
+<!--Footer starts here-->
+<footer class="footer-2" style="background-color: #01377f; ">
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);color:white">
+    © 2023 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">speedcopy.in</a>
+    | Designed by example.com
+  </div>
+  </div>
+</footer>
+<!--Footer ends here-->
+
+</html>

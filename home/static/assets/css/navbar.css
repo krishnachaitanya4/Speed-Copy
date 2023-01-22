@@ -1,0 +1,102 @@
+body{
+    min-height: 100vh;
+}
+.main{
+    min-height: 100vh;
+    
+}
+.navbar{
+    height: 75px;
+    background-color: white;
+    box-shadow: 0px 0px 20px 0px rgba(118, 118, 125, 0.2);
+}
+.navbar-brand{
+    font-size: 40px;
+}
+
+@media (max-width: 992px) {
+    .nav-link{
+        display: none;
+    }
+    .footer-2{
+        display: none;
+    }
+    
+}
+.nav-link{
+    color: #01377f;
+}
+.nav-link:hover{
+    background-image: linear-gradient(to right,white,rgb(58, 74, 150));
+    transform: scale(1,0.8);
+}
+
+
+@media (min-width: 992px) {
+    .footer-1{
+        display: none;
+    }
+    
+}
+
+@media (max-width:459px) {
+    .full-logo{
+        display: none;
+    }
+    
+}
+@media (min-width:459px) {
+    .half-logo{
+        display: none;
+    }
+    
+}
+.sticky-footer{
+    position: sticky;
+    top:100;
+}
+
+
+
+/* style for class chat */
+.chat {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    height: 60px;
+    background-color: orange;
+    border-radius: 50%;
+    margin: 30px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in;
+    margin-bottom: 100px;
+    z-index: 1000;
+  }
+  
+  .chat:hover {
+    transform: scale(1.1) rotate(30deg);
+    box-shadow: 0 0 30px #01377f(238, 116, 126);
+  }
+  
+  .chat svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+  }
+
+  @media(min-width:766px){
+    .chat{
+        height: 80px;
+        width: 80px;
+    }
+    .chat svg{
+        width: 50px;
+        height: 50px;
+    }
+  }
+  /* end chat style */
+  

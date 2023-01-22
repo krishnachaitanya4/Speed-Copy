@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Binding - SpeedCopy</title>
+</head>
+<body>
+    <div style="background-color: #F0F0F0; height: 96vh; padding-top:90px;" >
+        <div class="container mt-5 mb-5" >
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10">
+                    <div class="card" style="border-radius: 20px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-bottom: 100px;">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="images p-3">
+                                    <div class="text-center p-4"> <img id="main-image" src="{% static 'img/image/4436224.jpg' %}" width="450" /> </div>
+                                    <div><p class="about">{{pro.description}}</p></div>
+                                    <!--===============================-->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped  text-successtable-border border-light">
+                                          <thead class="border-light">
+                                            <tr>
+                                              <th scope="col">Pages </th>
+                                              <th scope="col"><strong>Price</strong></th>
+                                              
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <th scope="row">0 - 60</th>
+                                              <td>₹ 275.00</td>
+                                              
+                                            </tr>
+                                            <tr>
+                                              <th scope="row">61 - MAX</th>
+                                              <td>₹ 275.00 + ₹ 2.00/page</i></td>
+                                              
+                                            </tr>
+                                            
+                                            
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    <!--===============================-->
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product p-4">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center"> <a href="" style="text-decoration:none;color:black;"><i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span></a> </div>
+                                    </div>
+                                    <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">services</span>
+                                        <h5 class="text-uppercase">{{pro.name}}</h5>
+                                        
+                                        <!--<div class="thumbnail text-center" style=" height: 30px; margin-top:1 4px; ">  upload a pdf</div>-->
+                                    </div>
+                                    <!--Main form-->
+                                    <form method="post" action="{% url 'add_to_cart' %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="text" name="product_name" value="Record Binding" style="visibility: hidden;">
+                                        <div class="form-group  mb-3">
+                                            <label for="file">Upload pdf</label>
+                                            <input type="file" name="pdf_file" id="file" accept=".pdf" required class="form-control">
+                                        </div>
+  
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1">No.of pages</span>
+                                            <input
+                                            name = "pages"
+                                              type="text"
+                                              id = "dis-play"
+                                              class="form-control display"
+                                              placeholder="Upload pdf to get page count"
+                                              aria-label="Username"
+                                              aria-describedby="basic-addon1"
+                                              style="background-color:white;"
+                                              readonly
+                                            />
+                                          </div>
+    
+                                          <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon2">Quantity: </span>
+                                            
+                                            <input
+                                              name = "copies"
+                                              min = "1"
+                                              type="number"
+                                              id = "copies"
+                                              class="form-control"
+                                              placeholder="no_of_copies"
+                                              aria-label="no_of_copies"
+                                              aria-describedby="basic-addon1"
+                                              value="1"
+                                            />
+                                            
+                                          </div>
+    
+                                          <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text">price</span>
+                                            </div>
+                                            <input type="number" 
+                                            name = "price"
+                                            value="0.00" 
+                                            class="form-control" 
+                                            aria-label="Amount (to the nearest dollar)" 
+                                            id = "xxx"
+                                            style="background-color:white;" 
+                                            readonly />
+                                            <div class="input-group-append">
+                                              <span class="input-group-text">₹</span>
+                                            </div>
+                                          </div>
+                                          <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+                                          <script>
+                                            let file = document.getElementById("file") 
+                                            let copies = document.getElementById("copies");
+                                            let pages = 0
+                                            let n = 1;
+                                            let cost = 275;
+                                            papers = 0;    
+                                            function set_cost(n){
+                                                cost = n
+                                            }
+                                            function set_price(n){
+                                                pages = n;
+                                                //console.log(pages)
+                                            }
+                                            function set_n(a){
+                                                n = a;
+                                            }   
+                                            copies.onchange = function(event){
+                                                n = event.target.value
+                                                set_n(n)
+                                                console.log(cost*n);
+                                                document.getElementById("xxx").value= n*cost;
+                                            }
+                                            file.onchange =async function (event){
+                                                var ext = this.value.match(/\.([^\.]+)$/)[1];
+                                                    switch (ext) {
+                                                        case 'pdf':
+                                                        var pdf =await  event.target.files[0]
+                                                        console.log(pdf)
+                                                        if (pdf === undefined){
+                                                            console.log("no file choosen")
+                                                            pages = 0
+                                                            n = 1;
+                                                            set_price(0)
+                                                            if (pages<= 60){
+                                                                set_cost(275);
+                                                            }
+                                                            else{
+                                                                let ex_pages = pages - 60;
+                                                                let ex_price = (ex_pages * 2)+275;
+                                                                set_cost(ex_price);
+                                                            }
+                                                            console.log(n+cost);
+                                                            
+                                                            document.getElementById("dis-play").value =  pages       
+                                                            document.getElementById("xxx").value =  cost*n;
+                                                        }
+                                                        else
+                                                        {
+                                                            var filereader = await new FileReader()
+                                                            filereader.onload =async function  (){
+                                                                var typedarray =await new Uint8Array(this.result)
+                                                                const task = await pdfjsLib.getDocument(typedarray)
+                                                                await task.promise.then((pdf)=>{
+            
+                                                                    hi = pdf.numPages
+                                                                    document.getElementById("dis-play").value =  pdf.numPages   
+                                                                    console.log(pdf.numPages)
+                                                                    set_price(pdf.numPages)
+                                                                    console.log(pages)
+                                                                    if (pages<= 60){
+                                                                        set_cost(275);
+                                                                    }
+                                                                    
+                                                                    else{
+                                                                        let ex_pages = pages - 60;
+                                                                        let ex_price = (ex_pages * 2)+275;
+                                                                        set_cost(ex_price);
+                                                                    }
+        
+                                                                    console.log(cost);
+                                                                    document.getElementById("xxx").value = cost;    
+                                                                })
+                                                            }
+                                                            filereader.readAsArrayBuffer(pdf)  
+                                                        }
+                                                        break;
+                                                        default:
+                                                        alert('File other than pdf is not allowed');
+                                                        this.value=none;   
+                                                    }
+                                                
+                                            }
+                                        </script>      
+                                          <!--<h5 class="text-uppercase">price: <span id = "xxx"></span></h5>-->
+                                        {% if user.is_authenticated %}
+                                        <div class="car t mt-4 align-items-center"> <button type = "submit" class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
+                                        {% else %}
+                                        <div class="cart mt-4 align-items-center"> <button type = "submit" class="btn btn-danger text-uppercase mr-2 px-4" disabled>Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>
+                                        <span style="color: red;">* Please login before requesting a print.</span>
+                                        {% endif %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

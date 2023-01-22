@@ -1,0 +1,58 @@
+.gradient-custom-2 {
+   
+    
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #6699CC, #5072A7, #01377f, );
+    }
+    
+
+
+    .login-btn{
+        border: solid ;
+        background-color: #01377f;
+        color: white;
+        height: 45px;
+        width: 90px;
+        border-radius: 6px;
+    }
+    .login-btn2{
+        border: solid ;
+        background-color: #01377f;
+        color: white;
+        height: 52px;
+        width: 130px;
+        border-radius: 6px;
+    }
+    @media (min-width: 768px){
+        .login-div{
+            width:50vw;
+        }
+        .login-div2{
+            margin-left: 250px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 18px;
+        }
+        .login-div3{
+            margin-left: 200px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 18px;
+        }
+
+    }
+    @media (min-width: 768px){
+        .login-div{
+            width:40vw;
+        }
+    }
+    @media (min-width: 768px) {
+    .gradient-form {
+    height: 100vh !important;
+    }
+    }
+    @media (min-width: 769px) {
+    .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    }
+    }

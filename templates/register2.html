@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>  
+    <title>Document</title>
+</head>
+<body>
+    <section id="nav">
+        <nav class="my-nav my-nav2 register-nav-shadow" style=" box-shadow: 0px 10px 12px grey; background-color: white"  >
+            <div class="my-nav-logo">
+                <img src="{% static 'img/image/speed_copy.png' %}" class="logo-img"  />
+            </div>
+        </nav>
+    </section>
+    <div>
+        <section class="h-100 gradient-form" style="background-color: #eee; padding-top: 80px; ">
+            <div class="container py-5 h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-12">
+                  <div class="card rounded-3 text-black login-div login-div2">
+                    <div class="row g-0">
+                      <div class="col-lg-12">
+                        <div class="card-body p-md-5 mx-md-4 login-div">
+                          <div class="text-center">
+                            <h4 class="mt-1 mb-5 pb-1 p-3 ">Register  here</h4>
+                          </div>
+          
+                          <form action='register' method = 'post'>
+                            {% csrf_token %}
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example11">First Name</label>
+                              <input type="text" id="form2Example11" class="form-control"
+                                placeholder="First Name" name = "f_name"/>
+                             
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example11">Last Name</label>
+                              <input type="text" id="form2Example11" class="form-control"
+                                placeholder="Last Name" name = "l_name" />
+                             
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example11">Email</label>
+                              <input type="email" id="form2Example11" class="form-control"
+                                placeholder="Email" name = "email"/>
+                             
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example11">Mobile Number</label>
+                              <input type="number" id="form2Example11" class="form-control"
+                                placeholder="Mobile Number" name = "phone"/>
+                             
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example11">Password</label>
+                              <input type="password" id="form2Example11" class="form-control"
+                                placeholder="Password" name = "password"/>
+                             
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form2Example11">Confirm Password</label>
+                              <input type="password" id="form2Example11" class="form-control"
+                                placeholder="Confirm Password" name = "password2"/>
+                             
+                            </div>
+          
+          
+                          
+                            <div class="text-center pt-1 mb-5 pb-1">
+                              <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Sign Up
+                                </button>
+                              <a class="text-muted" href="#!">Forgot password?</a>
+                            </div>
+          
+                            
+          
+                          </form>
+                        
+                          <div class="d-flex align-items-center justify-content-center pb-4">
+                            <p class="mb-0 me-2">Have an account?</p>
+                            <button type="button" class="login-btn" style="margin-left: 15px;" ><a href = "login" style="text-decoration: none; color: white;">Login</a></button>
+                          </div>
+          
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+     </div>
+
+     <div>
+        <!-- footer section starts-->
+<!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="container-fluid   footer-section" style="width: 100vw;  margin-left: 0px; margin-right: 0px; padding:0px;" >
+    <!-- Footer -->
+    <footer
+            class="text-center text-lg-start text-dark"
+            style="background-color: #ECEFF1; margin-right: 0px;"
+            >
+      <!-- Section: Social media -->
+      <section
+               class="d-flex justify-content-around p-4 text-white"
+               style="background-color: #01377f"
+               >
+        <!-- Left -->
+        <div class="me-5">
+          <span class="hi10">Get connected with our Social media </span>
+          <span  class="hi9">Get connected :</span>
+        </div>
+        <!-- Left -->
+        <!-- Right -->
+        <div>
+          
+          <a href="" class="text-white me-4 " style="padding-right: 9px;">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="text-white me-4"  style="padding-right: 9px;">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="text-white me-4"  style="padding-right: 9px;">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="text-white me-4"  style="padding-right: 9px;">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          
+        </div>
+        <!-- Right -->
+      </section>
+      <!-- Section: Social media -->
+  
+      <!-- Section: Links  -->
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <!-- Grid row -->
+          <div class="row mt-3">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <!-- Content -->
+              <h6 class="text-uppercase fw-bold">Company name</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #7c4dff; height: 2px"
+                  />
+              <p>
+                Here you can use rows and columns to organize your footer
+                content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                elit.
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Products</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #7c4dff; height: 2px"
+                  />
+              <p>
+                <a href="#!" class="text-dark">MDBootstrap</a>
+              </p>
+              <p>
+                <a href="#!" class="text-dark">MDWordPress</a>
+              </p>
+              <p>
+                <a href="#!" class="text-dark">BrandFlow</a>
+              </p>
+              <p>
+                <a href="#!" class="text-dark">Bootstrap Angular</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Useful links</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #7c4dff; height: 2px"
+                  />
+              <p>
+                <a href="#!" class="text-dark">Your Account</a>
+              </p>
+              <p>
+                <a href="#!" class="text-dark">Become an Affiliate</a>
+              </p>
+              <p>
+                <a href="#!" class="text-dark">Shipping Rates</a>
+              </p>
+              <p>
+                <a href="#!" class="text-dark">Help</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold">Contact</h6>
+              <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto"
+                  style="width: 60px; background-color: #7c4dff; height: 2px"
+                  />
+              <p><i class="fas fa-home mr-3"></i> surampalem, East Godavari, AP</p>
+              <p><i class="fas fa-envelope mr-3"></i>speedcopy@gmail.com</p>
+              <p><i class="fas fa-phone mr-3"></i> 987654321</p>
+              <p><i class="fas fa-print mr-3"></i> Visit Us</p>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </div>
+      </section>
+      <!-- Section: Links  -->
+  
+      <!-- Copyright -->
+      <div
+           class="text-center p-3"
+           style="background-color: rgba(0, 0, 0, 0.2)"
+           >
+        © 2020 Copyright:
+        <a class="text-dark" href="#"
+           >SpeedCopy.in</a
+          >
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+  </div>
+  <!-- End of .container -->
+
+<!--footer section ends-->
+
+     </div>
+
+
+
+    
+</body>
+</html>

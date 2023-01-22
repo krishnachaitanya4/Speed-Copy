@@ -1,0 +1,98 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'assets/bootstrap_css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script>
+    var host = "{{ request.scheme }}://{{ request.get_host }}"  
+    var url = "{%get_media_prefix%}"
+  </script>
+  
+  <title>SpeedCopy - cart</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+  {%include 'admin_navbar.html'%}
+  <div>
+    <section class="h-100" style="padding-bottom: 50px ; min-height: 93vh">
+      <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-12 col-lg-12">
+            {% csrf_token %}
+            <div class="d-flex justify-content-between align-items-center mb-4 h-100">
+              <h1 class="fw-normal mb-0 text-black">Orders</h1>
+              <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                  <label for="date" class="form-label" style="margin-top:10px;"><h6>Date</h6></label>
+                </div>
+                <div class="col-auto border-light">
+                  <input type="date" class="form-control date" name="date" id="date">
+                </div>
+              </div>
+              <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                  <label for="status" class="form-label status" name="status" style="margin-top:10px;"><h6>Status</h6></label>
+                </div>
+                <div class="col-auto">
+                  <select class="form-select status" id='status' name="status"
+                    style="max-width: 200px;">
+                    <option selected value="All">All</option>
+                    <option value="Order Received">Order Received</option>
+                    <option value="Printed">Printed</option>
+                    <option value="Shipped">Shipped</option>
+                    <option value="Delivered">Delivered</option>
+                </select>
+                </div>
+              </div>
+              <button type="button" class="btn btn-success submit">Show</button>
+            </div>
+            <div class="card mb-4">
+              <div class="card-body p-4 d-flex flex-row">
+                <div class="form-outline flex-fill">
+                  
+                  <table class="table text-center">
+                    <thead>
+                      <tr>
+                        <th scope="col">#Order ID</th>
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Total Price</th>
+                        <th scope="col">College</th>
+                        <th scope="col">Delivery status</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="{% static 'assets/js/admin_orders.js' %}"></script>
+</body>
+<!--Footer starts here-->
+<footer class="footer-2" style="background-color: #01377f; ">
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);color:white">
+    © 2023 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">speedcopy.in</a>
+    | Designed by example.com
+  </div>
+  </div>
+</footer>
+<!--Footer ends here-->
+
+</html>

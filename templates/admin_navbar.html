@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!--Nav section starts here-->
+    <!--Top navbar start here-->
+  <nav class="navbar sticky-top navbar-expand-lg">
+    <div class="container-fluid">
+      <img class="full-logo" src="{% static 'assets/images/speed_copy.png' %}" alt="" style="height: 60px;">
+      <img class="half-logo" src="{% static 'assets/images/speed_copy2.png' %}" alt="" style="height: 60px;">
+      {% if request.user.is_superuser %}
+      <div class="collapse navbar-collapse text-center" id="navbarNavAltMarkup">
+        <div class="navbar-nav" style="margin-left: 40px;">
+          <a class="nav-link" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="{% url 'manage-orders' %}">Orders</a>
+          <a class="nav-link">Staff</a>
+        </div>
+      </div>
+      {% endif %}
+      <div class="d-flex justify-content-end">
+        <div class="float-rignt h6">
+      {{request.user}} | <a href="{% url 'logout' %}" style="color: red;">logout</a>
+    </div>
+    </div>
+    
+    </div>
+  </nav>
+  
+</body> 
+
+</html>

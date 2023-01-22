@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0    ' %}">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap_css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/printing.css' %}">
+    <title>Product</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center" style="margin-bottom: 70px;">
+        <div class="card printing-card  mb-3" style="margin-top:30px;">
+            <div class="row g-0">
+                <div class="col-md-5">
+                    <img src="{% static 'assets/images/29626.jpg' %}" class="img-fluid rounded-start" alt="..."
+                        style="padding: 20px;">
+                    <div class="table-responsive">
+                        <table class="table table-striped  text-successtable-border border-light">
+                            <thead class="border-light">
+                                <tr>
+                                    <th scope="col">Print type </th>
+                                    <th scope="col">Side(s)</th>
+                                    <th scope="col"><strong>Price</strong></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">B&W</th>
+                                    <td>1</td>
+                                    <td>₹1.25/page</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">B&W</th>
+                                    <td>2</td>
+                                    <td>₹1.50/page</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Colour</th>
+                                    <td>1</td>
+                                    <td>₹10.0/page</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Colour</th>
+                                    <td>2</td>
+                                    <td>N/A</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h5 class="card-title">Printing</h5>
+                        <p class="card-text ">This is a wider card with supporting text below as a natural lead-in to
+                            additional
+                            content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-success">Price:1.5rs/page</small></p>
+                        <form action="">
+                            <div class="container upload">
+                                <input type="file" class="upload-box" />
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">Print colour</span>
+                                <select class="selectpicker" name="colour" id="selectorColorId">
+                                    <option value="1">Black and White</option>
+                                    <option value="2">Colour</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">No.of sides</span>
+                                <select class="selectpicker" name="sides" id="selectorSideId">
+                                    <option value="1">single side</option>
+                                    <option value="2">two sides</option>
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">No.of pages</span>
+                                <input name="pages" type="text" id="dis-play" class="form-control display"
+                                    placeholder="Upload pdf to get page count" aria-label="Username"
+                                    aria-describedby="basic-addon1" style="background-color:white;" readonly />
+
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basic-addon2">No.of copies</span>
+                                    <input name="copies" min="1" type="number" id="copies" class="form-control"
+                                        placeholder="no_of_copies" aria-label="no_of_copies"
+                                        aria-describedby="basic-addon1" value="1" />
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">price</span>
+                                    </div>
+                                    <input type="number" name="price" value="0.00" class="form-control"
+                                        aria-label="Amount (to the nearest dollar)" id="xxx"
+                                        style="background-color:white;" readonly />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">₹</span>
+                                    </div>
+                                </div>
+                                <div class="cart mt-4 align-items-center"> <button type="submit"
+                                        class="btn btn-success text-uppercase mr-2 px-4">Add to cart</button> <i
+                                        class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

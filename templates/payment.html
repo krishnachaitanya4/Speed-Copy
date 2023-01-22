@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap_css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/index.css' %}">
+    <!--https://unpkg.com/@popperjs/core@2-->
+    <script src="{% static 'assets/js/popper.min.js'%}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.js'%}"></script>
+    <title>SpeedCopy - cart</title>
+
+    <script src="https://kit.fontawesome.com/20c5629a29.js" crossorigin="anonymous"></script>
+    <script>
+        var url = "{{ request.scheme }}://{{ request.get_host }}{% url 'confirm_order' %}"
+    </script>
+</head>
+
+<body id="home">
+    <!--nav section starts-->
+    {% include 'navbar.html' %}
+    <!--nav ends here-->
+    <!--payment starts here-->
+    
+    {% block content %}
+    <form method="post">
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var options = {
+                key: "{{razorpay_key}}",
+                amount: "{{price}}",
+                currency: "INR",
+                name: "{{order.name}}",
+                description: "Test Transaction",
+                image: "{% static 'assets/images/speed_copy2.png' %}",
+                order_id: "{{order_id}}",
+                callback_url: url,
+                redirect: true,
+                prefill: {
+                    "name": "{{user.first_name}}",
+                    "email": "{{user.email}}",
+                    "contact": "{{phone}}"
+                },
+                theme: {
+                    "color": "#01377f"
+                }
+                
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        </script>
+    </form>
+    {% endblock %}
+
+    <!--payment ends here-->
+</body>
+
+</html>
