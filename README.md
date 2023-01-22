@@ -11,6 +11,6 @@
 
 ! NOTE: Do not deploy the app in production server. The app was not fully developed and tested. 
 
-SERVERS: Nginx & Gunicorn(WSGI)
+SERVERS: Nginx & uWSGI(WSGI)
 !!! Not recomended to host in production server.
 THANK YOU. 
